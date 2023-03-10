@@ -6,4 +6,7 @@ d’instructions limité, et avec le moins d’opérations possibles. Pour le r�
 devrez manipuler différents algorithmes de tri et choisir la (ou les ?) solution la plus
 appropriée pour un classement optimisé des données.
 
+![flow-chart](https://user-images.githubusercontent.com/124174795/224261630-282f57d2-8e96-4908-a511-e9a54573ae35.svg)
+
+
 https://medium.com/@ayogun/push-swap-c1f5d2d41e97
