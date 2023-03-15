@@ -14,7 +14,9 @@ https://medium.com/@ayogun/push-swap-c1f5d2d41e97
 https://prezi.com/8gbz6bsvbxw_/push-swap/
 
 COMPLEXITE
+
 https://fr.wikipedia.org/wiki/Analyse_de_la_complexit%C3%A9_des_algorithmes
 
 PILES
+
 https://fr.wikipedia.org/wiki/Pile_(informatique)
