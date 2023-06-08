@@ -24,3 +24,7 @@ https://fr.wikipedia.org/wiki/Pile_(informatique)
 GENERATEUR NOMBRES ALEATOIRES
 
 https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
+
+VIZUALIZER
+
+https://github.com/o-reo/push_swap_visualizer
