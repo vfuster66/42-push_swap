@@ -20,3 +20,7 @@ https://fr.wikipedia.org/wiki/Analyse_de_la_complexit%C3%A9_des_algorithmes
 PILES
 
 https://fr.wikipedia.org/wiki/Pile_(informatique)
+
+GENERATEUR NOMBRES ALEATOIRES
+
+https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
