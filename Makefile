@@ -6,7 +6,7 @@
 #    By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 15:34:32 by vfuster-          #+#    #+#              #
-#    Updated: 2023/06/13 11:20:51 by vfuster-         ###   ########.fr        #
+#    Updated: 2023/06/20 16:26:14 by vfuster-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ PUSHSWAP_SRCS = push_swap.c
 HEADERS = push_swap.h
 
 CC = gcc -g
-CC_FLAGS = -Wall -Werror -Wextra
+CC_FLAGS = -lm -Wall -Werror -Wextra
 
 .PHONY: all libft clean fclean re
 
