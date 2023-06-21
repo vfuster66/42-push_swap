@@ -67,13 +67,12 @@ SRCS := ft_strjoin.c \
 	ft_iswhitespace.c \
 	ft_strtol.c \
 	ft_strcmp.c \
-	ft_realloc.c \
-	ft_strcpy.c \
+	ft
 
 OBJS := $(SRCS:.c=.o)
 
 .c.o:
-	@$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 ################################################################################
 #                                  Makefile  objs                              #
@@ -89,17 +88,21 @@ CYAN := \033[1;36m
 RM := rm -f
 
 $(NAME): $(OBJS)
-	@ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 	@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
 	@echo "$(GREEN)$(NAME) created $(CLR_RMV)✔️"
 
 all: $(NAME)
 
+bonus: all
+
 clean:
 	@$(RM) $(OBJS)
+	@echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
 
 fclean: clean
 	@$(RM) $(NAME)
+	@echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
 
 re: fclean all
 
