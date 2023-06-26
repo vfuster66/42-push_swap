@@ -868,42 +868,42 @@ static int	initialize_stack(t_stack **a, t_stack **b, char **str_array)
 	return (1);
 }
 
-static int	split_len(char **spl)
+static int	split_len(char **str_array)
 {
-	int	i;
+	int	index;
 
-	i = -1;
-	if (!spl)
+	index = -1;
+	if (!str_array)
 		return (-1);
-	while (spl[++i])
-		free(spl[i]);
-	free(spl);
-	return (i);
+	while (str_array[++index])
+		free(str_array[index]);
+	free(str_array);
+	return (index);
 }
 
 static char	**find_useful_args(int ac, char **av)
 {
 	int		i;
-	char	**array;
+	char	**str_array;
 
 	if (ac > 2)
 	{
 		i = 0;
-		array = malloc(sizeof(char *) * ac);
+		str_array = malloc(sizeof(char *) * ac);
 		while (++i < ac)
 		{
-			if (split_len(ft_split(av[i], ' ')) != 1 || !array)
+			if (split_len(ft_split(av[i], ' ')) != 1 || !str_array)
 			{
 				i++;
-				while (--i != 0 || array != NULL)
-					free(array[i]);
-				free(array);
+				while (--i != 0 || str_array != NULL)
+					free(str_array[i]);
+				free(str_array);
 				return (NULL);
 			}
-			array[i - 1] = ft_strdup(av[i]);
+			str_array[i - 1] = ft_strdup(av[i]);
 		}
-		array[ac - 1] = NULL;
-		return (array);
+		str_array[ac - 1] = NULL;
+		return (str_array);
 	}
 	if (ac == 2)
 		return (ft_split(av[1], ' '));
