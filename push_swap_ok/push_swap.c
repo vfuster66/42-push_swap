@@ -145,18 +145,18 @@ void	free_stack(t_stack **stack)
 int	len(t_stack *stack)
 {
 	t_stack	*temp;
-	int		index;
+	int		stack_length;
 
 	if ((stack) && stack->next != stack)
 	{
 		temp = (stack)->next;
-		index = 1;
+		stack_length = 1;
 		while (temp != (stack))
 		{
-			++index;
+			++stack_length;
 			temp = temp->next;
 		}
-		return (index);
+		return (stack_length);
 	}
 	return (0);
 }
