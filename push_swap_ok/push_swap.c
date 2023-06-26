@@ -575,17 +575,17 @@ static void	duplicates_and_finish(int array[], int len, t_medianquartile **data)
 	fill_median_quartile(data, len, array);
 }
 
-void	find_median_quartile(char **spl, t_medianquartile **data, int *error)
+void	find_median_quartile(char **array, t_medianquartile **data, int *error)
 {
 	int		len;
 	int		i;
-	int		*tab;
+	int		*int_tab;
 
 	len = 0;
-	while (spl[len] && spl != NULL)
+	while (array[len] && array != NULL)
 		++len;
 	tab = malloc(sizeof(int) * len);
-	if (!tab || !spl)
+	if (!int_tab || !array)
 	{
 		(*data) = NULL;
 		return ;
@@ -593,14 +593,14 @@ void	find_median_quartile(char **spl, t_medianquartile **data, int *error)
 	i = len;
 	while (--i != -1)
 	{
-		tab[i] = ft_atoi_and_check(spl[i], error);
-		free(spl[i]);
+		int_tab[i] = ft_atoi_and_check(array[i], error);
+		free(array[i]);
 	}
-	free(spl);
-	quick_sort(tab, 0, len - 1);
-	duplicates_and_finish(tab, len, data);
-	(*data)->median = tab[((*data)->median) - 1];
-	free(tab);
+	free(array);
+	quick_sort(int_tab, 0, len - 1);
+	duplicates_and_finish(int_tab, len, data);
+	(*data)->median = int_tab[((*data)->median) - 1];
+	free(int_tab);
 }
 
 static int	count_move(t_stack *a, t_stack *b, int element)
