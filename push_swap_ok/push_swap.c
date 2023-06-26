@@ -647,14 +647,14 @@ int	find_best_move(t_stack *a, t_stack *b)
 
 int	is_sorted(t_stack *stack)
 {
-	int	i;
+	int	index;
 	int	length;
 
 	length = len(stack);
 	if (length > 0)
 	{
-		i = 1;
-		while (i++ < length)
+		index = 1;
+		while (index++ < length)
 		{
 			if (stack->value > stack->next->value)
 				return (0);
