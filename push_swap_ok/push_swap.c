@@ -884,26 +884,26 @@ static int	split_len(char **spl)
 static char	**find_useful_args(int ac, char **av)
 {
 	int		i;
-	char	**split;
+	char	**array;
 
 	if (ac > 2)
 	{
 		i = 0;
-		split = malloc(sizeof(char *) * ac);
+		array = malloc(sizeof(char *) * ac);
 		while (++i < ac)
 		{
-			if (split_len(ft_split(av[i], ' ')) != 1 || !split)
+			if (split_len(ft_split(av[i], ' ')) != 1 || !array)
 			{
 				i++;
-				while (--i != 0 || split != NULL)
-					free(split[i]);
-				free(split);
+				while (--i != 0 || array != NULL)
+					free(array[i]);
+				free(array);
 				return (NULL);
 			}
-			split[i - 1] = ft_strdup(av[i]);
+			array[i - 1] = ft_strdup(av[i]);
 		}
-		split[ac - 1] = NULL;
-		return (split);
+		array[ac - 1] = NULL;
+		return (array);
 	}
 	if (ac == 2)
 		return (ft_split(av[1], ' '));
