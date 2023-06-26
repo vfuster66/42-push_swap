@@ -83,6 +83,31 @@ int	find_insertion_position(t_stack *stack, int element)
 	return (0);
 }
 
+void	free_stack(t_stack **stack)
+{
+	t_stack	*current;
+	t_stack	*temp;
+
+	if ((*stack) == NULL)
+		return ;
+	current = (*stack);
+	while (current->next != (*stack))
+	{
+		temp = current;
+		current = current->next;
+		free(temp);
+	}
+	free(current);
+	*stack = NULL;
+}
+
+void	free_stacks(t_stack **a, t_stack **b, t_medianquartile **data)
+{
+	free_stack(a);
+	free_stack(b);
+	free(*data);
+}
+
 int	new_element(int number, t_stack **element)
 {
 	(*element) = malloc(sizeof(t_stack));
@@ -92,13 +117,6 @@ int	new_element(int number, t_stack **element)
 	(*element)->next = NULL;
 	(*element)->previous = NULL;
 	return (1);
-}
-
-void	free_stacks(t_stack **a, t_stack **b, t_medianquartile **data)
-{
-	free_stack(a);
-	free_stack(b);
-	free(*data);
 }
 
 int	add_to_list(t_stack **stack, int number)
@@ -122,43 +140,6 @@ int	add_to_list(t_stack **stack, int number)
 		(*stack) = element;
 	}
 	return (1);
-}
-
-void	free_stack(t_stack **stack)
-{
-	t_stack	*current;
-	t_stack	*temp;
-
-	if ((*stack) == NULL)
-		return ;
-	current = (*stack);
-	while (current->next != (*stack))
-	{
-		temp = current;
-		current = current->next;
-		free(temp);
-	}
-	free(current);
-	*stack = NULL;
-}
-
-int	len(t_stack *stack)
-{
-	t_stack	*temp;
-	int		stack_length;
-
-	if ((stack) && stack->next != stack)
-	{
-		temp = (stack)->next;
-		stack_length = 1;
-		while (temp != (stack))
-		{
-			++stack_length;
-			temp = temp->next;
-		}
-		return (stack_length);
-	}
-	return (0);
 }
 
 void	pa(t_stack **a, t_stack **b, t_medianquartile **data)
@@ -643,6 +624,25 @@ int	find_best_move(t_stack *a, t_stack *b)
 		temp = temp->next;
 	}
 	return (best_move_element);
+}
+
+int	len(t_stack *stack)
+{
+	t_stack	*temp;
+	int		stack_length;
+
+	if ((stack) && stack->next != stack)
+	{
+		temp = (stack)->next;
+		stack_length = 1;
+		while (temp != (stack))
+		{
+			++stack_length;
+			temp = temp->next;
+		}
+		return (stack_length);
+	}
+	return (0);
 }
 
 int	is_sorted(t_stack *stack)
