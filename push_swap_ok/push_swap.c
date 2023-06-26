@@ -845,26 +845,26 @@ void	optimize_pa(t_stack *a, t_stack *b, t_medianquartile *data)
 	exit(1);
 }
 
-static int	initialize_stack(t_stack **a, t_stack **b, char **spl)
+static int	initialize_stack(t_stack **a, t_stack **b, char **str_array)
 {
-	int	i;
-	int	t;
+	int	index;
+	int	added_value;
 
-	i = 0;
+	index = 0;
 	*a = NULL;
 	*b = NULL;
-	if (!spl)
+	if (!str_array)
 		return (-1);
-	while (spl[i])
-		i++;
-	while (--i >= 0)
+	while (str_array[index])
+		index++;
+	while (--index >= 0)
 	{
-		t = add_to_list(a, ft_atoi(spl[i]));
-		if (t == -1)
+		added_value = add_to_list(a, ft_atoi(str_array[index]));
+		if (added_value == -1)
 			return (-1);
-		free(spl[i]);
+		free(str_array[index]);
 	}
-	free(spl);
+	free(str_array);
 	return (1);
 }
 
