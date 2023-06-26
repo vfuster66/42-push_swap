@@ -15,18 +15,18 @@
 int	find_index(t_stack *stack, int element)
 {
 	t_stack	*temp;
-	int		i;
+	int		index;
 
-	i = 0;
+	index = 0;
 	temp = stack;
 	while (temp->next != stack)
 	{
 		if (temp->value == element)
-			return (i);
+			return (index);
 		temp = temp->next;
-		++i;
+		++index;
 	}
-	return (i);
+	return (index);
 }
 
 int	find_minimum(t_stack *stack)
@@ -145,18 +145,18 @@ void	free_stack(t_stack **stack)
 int	len(t_stack *stack)
 {
 	t_stack	*temp;
-	int		i;
+	int		index;
 
 	if ((stack) && stack->next != stack)
 	{
 		temp = (stack)->next;
-		i = 1;
+		index = 1;
 		while (temp != (stack))
 		{
-			++i;
+			++index;
 			temp = temp->next;
 		}
-		return (i);
+		return (index);
 	}
 	return (0);
 }
