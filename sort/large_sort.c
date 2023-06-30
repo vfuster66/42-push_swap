@@ -6,12 +6,13 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 08:33:52 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/29 14:18:08 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:59:56 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+//Tri final de la liste de noeuds
 static void	final_sort(t_stack *stack)
 {
 	t_node	*last_node;
@@ -39,12 +40,14 @@ static void	final_sort(t_stack *stack)
 	return (final_sort(stack));
 }
 
+//Premier tri de la liste de noeuds
 static void	first_sort(t_stack *stack, int sixteenth)
 {
 	minimum_median(stack, sixteenth);
 	maximum_median(stack, sixteenth);
 }
 
+//Tri complet de la liste de noeuds
 static void	perform_sort(t_stack *stack)
 {
 	while (stack->b)
@@ -52,6 +55,7 @@ static void	perform_sort(t_stack *stack)
 	perform_rotation(stack, find_minimum(stack->a)->position, STACK_A);
 }
 
+//Tri rapide de la liste de noeuds
 void	quick_sort(t_stack *stack)
 {
 	first_sort(stack, stack->total_len / 16);

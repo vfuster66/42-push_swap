@@ -6,12 +6,13 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 08:30:02 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/28 10:40:03 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:44:24 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+//tri de 2 a 25 elements passes en argument
 void	sort_less_than_three(t_stack *stack, int minimum_position)
 {
 	if (!stack || !minimum_position)

@@ -6,7 +6,7 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:56:20 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/30 10:42:04 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:04:00 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,15 @@ int					read_parameters(t_node_instructions *node);
 // checker.c
 t_list_instructions	*parsing_instructions(void);
 int					read_instructions(t_list_instructions *all_instruction);
-void		perform_instructions(t_node_instructions *instructions, t_stack *stacks);
-char		*get_instructions(int instructions_index);
+void				perform_instructions(t_node_instructions *instructions,
+						t_stack *stacks);
+char				*get_instructions(int instructions_index);
 
 // utils
-int			is_sorted(t_stack *stacks);
-void		execute_instructions(int display, t_stack *stacks,
-int instruction_number, ...);
-int			initialize_structure(t_stack **stacks, int ac, char **av);
-void		*free_stack(t_stack **stack);
+int					is_sorted(t_stack *stacks);
+void				execute_instructions(int display, t_stack *stacks,
+						int instruction_number, ...);
+int					initialize_structure(t_stack **stacks, int ac, char **av);
+void				*free_stack(t_stack **stack);
 
 #endif

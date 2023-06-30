@@ -6,7 +6,7 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:56:20 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/30 15:22:54 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:04:43 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-//-_-_-_-_-_-_-_-_-_-_- Constantes
+// Constantes
 # define TRUE 1
 # define FALSE 0
 # define STACK_A 1
@@ -35,7 +35,7 @@
 # define SB 9
 # define SS 10
 
-//-_-_-_-_-_-_-_-_-_-_- Structures
+// Structures
 typedef struct s_node
 {
 	int				value;
@@ -98,7 +98,8 @@ void		execute_instructions(int display, t_stack *stacks,
 				int instruction_number, ...);
 
 // parsing.c
-t_node	*create_and_link_node(t_arg_manager *manager, int index, t_node **head);
+t_node		*create_and_link_node(t_arg_manager *manager,
+				int index, t_node **head);
 t_node		*parsing(int index, int ac, char **av, t_node *head);
 
 //utils_sort.c

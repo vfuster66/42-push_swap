@@ -6,12 +6,14 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 08:29:30 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/29 14:18:23 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:36:42 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+//Verifie si les noeuds de la liste chainee sont tries dans l'ordre
+//croissant selon leur champ index
 static int	is_ordered(t_node *head, t_node *minimum, t_node *current)
 {
 	t_node	*index;
@@ -29,6 +31,7 @@ static int	is_ordered(t_node *head, t_node *minimum, t_node *current)
 	return (0);
 }
 
+//Verifie si la liste stacks->a est triee dans l'ordre croissant
 int	is_sorted(t_stack *stacks)
 {
 	t_node	*current;
@@ -47,6 +50,11 @@ int	is_sorted(t_stack *stacks)
 	return (minimum->position);
 }
 
+//Calcule le decalage d'une position donnee par rapport a la
+//moitie de la longueur totale de la liste.
+//Si la position est superieure a la moitie de la longueur
+//elle renvoie la difference entre la position et la longueur.
+//Sinon, renvoie la position elle-meme
 static int	calculate_offset_position(int position, int len)
 {
 	if (position > len / 2)
@@ -54,6 +62,7 @@ static int	calculate_offset_position(int position, int len)
 	return (position);
 }
 
+//Effectue un decalage circulaire des noeuds dans une liste
 void	perform_rotation(t_stack *stack, int position, int stack_a)
 {
 	int	offset;

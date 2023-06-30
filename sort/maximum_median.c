@@ -6,12 +6,14 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 10:13:11 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/28 10:13:31 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:58:11 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+//Trie la partie inferieure de b lorsque la valeur du noeud est
+//superieure au seizieme
 static void	maximum_sixteenth_bottom(t_stack *stack, int sixteenth)
 {
 	while (stack->b->index > sixteenth * 8)
@@ -37,6 +39,8 @@ static void	maximum_sixteenth_bottom(t_stack *stack, int sixteenth)
 		execute_instructions(TRUE, stack, 1, PB);
 }
 
+//Trie la partie centrale de la liste a lorsque la valeur du noeud
+//est inferieure ou egale au seizieme
 static void	maximum_sixteenth_middle(t_stack *p, int sixteenth)
 {
 	t_node	*last_nodea;
@@ -63,6 +67,8 @@ static void	maximum_sixteenth_middle(t_stack *p, int sixteenth)
 		execute_instructions(TRUE, p, 1, RRB);
 }
 
+//Trie la partie superieure de a lorsque la valeur est inferieure
+//ou egale au seizieme
 static void	maximum_sixteenth_top(t_stack *p, int sixteenth)
 {
 	while (p->len_a > 2)
@@ -78,6 +84,8 @@ static void	maximum_sixteenth_top(t_stack *p, int sixteenth)
 		execute_instructions(TRUE, p, 1, RRB);
 }
 
+//Trie une liste de noeuds lorsque la taille de la liste est
+//superieure a la mediane donnee
 void	maximum_median(t_stack *stack, int sixteenth)
 {
 	t_node	*last_node;

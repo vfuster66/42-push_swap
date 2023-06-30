@@ -6,12 +6,14 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:30:08 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/28 09:36:00 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:22:51 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+//Manipulation sructure de donnees en liste chainee t_node
+//Recherche le noeud avec la valeur index la plus petite ds la liste
 t_node	*find_minimum(t_node *head)
 {
 	t_node	*index;
@@ -30,6 +32,7 @@ t_node	*find_minimum(t_node *head)
 	return (result);
 }
 
+//Recherche le noeud avec la valeur index la plus grande ds la liste
 t_node	*find_maximum(t_node *head)
 {
 	t_node	*index;
@@ -46,6 +49,8 @@ t_node	*find_maximum(t_node *head)
 	return (result);
 }
 
+// Fonction recursive utilisee pour mettre a jour la valeur index
+// Compare la valeur previous et current
 void	get_index(t_node *previous, t_node *current)
 {
 	if (!previous)
@@ -57,6 +62,7 @@ void	get_index(t_node *previous, t_node *current)
 	get_index(previous->previous, current);
 }
 
+// cherche le noeud le plus proche de la cible
 t_node	*find_closest_node(t_node *list_a, t_node *target_node)
 {
 	t_node	*closest_node;
@@ -82,6 +88,8 @@ t_node	*find_closest_node(t_node *list_a, t_node *target_node)
 	return (closest_node);
 }
 
+//cree un nouveau noeud avec une valeur donnee, une position donnee
+//et un noeud precedent donne
 t_node	*create_node(int value, int position, t_node *previous)
 {
 	t_node	*new_node;
