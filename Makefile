@@ -1,30 +1,53 @@
-# Compilateur et options
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+# Compiler and flags
+CC = cc
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 
-# Noms des programmes
+# Program names
 NAME = push_swap
 NAME_BONUS = checker
 
-# Bibliothèques
+# Library
 LIB_PATH = ./libft
 LIB_NAME = libft.a
 LIB_INC = -I$(LIB_PATH)
 LIB_LINK = -L$(LIB_PATH) -lft
 
 # Sources
-SRCS = src/main.c src/utils_1.c src/utils_2.c src/utils_sort.c \
-		src/push_and_swap.c src/rotate.c src/reverse_rotate.c \
-		src/instructions.c src/minimum_median.c src/parsing.c \
-		src/maximum_median.c src/medium_small_sort.c src/large_sort.c
+SRC_MAIN = ./src/main.c \
 
-SRCS_BONUS = bonus/checker.c
+DIR_SRC = ./parsing/
+SRC_FILES = parsing.c initialize_and_free.c \
 
-# Objets
-OBJS = $(SRCS:.c=.o)
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+DIR_SORT = ./sort/
+SORT_FILES = large_sort.c medium_small_sort.c \
+             minimum_median.c maximum_median.c \
 
-# Règles
+DIR_UTILS = ./utils/
+UTILS_FILES = utils_1.c utils_2.c utils_sort.c \
+
+DIR_INSTRUCTION = ./instructions/
+INSTRUCTION_FILES = instructions.c push_and_swap.c \
+                    rotate.c reverse_rotate.c \
+
+SRC_WITHOUT_MAIN = $(addprefix $(DIR_SRC), $(SRC_FILES)) \
+                   $(addprefix $(DIR_UTILS), $(UTILS_FILES)) \
+                   $(addprefix $(DIR_SORT), $(SORT_FILES)) \
+                   $(addprefix $(DIR_INSTRUCTION), $(INSTRUCTION_FILES))
+
+SRC = $(SRC_MAIN) \
+      $(SRC_WITHOUT_MAIN)
+
+DIR_BONUS = ./bonus/
+BONUS_FILES = checker.c checks.c
+
+SRC_BONUS = $(addprefix $(DIR_BONUS), $(BONUS_FILES)) \
+            $(SRC_WITHOUT_MAIN)
+
+# Objects
+OBJS = $(SRC:.c=.o)
+OBJS_BONUS = $(SRC_BONUS:.c=.o)
+
+# Rules
 %.o: %.c
 	@$(CC) $(CFLAGS) $(LIB_INC) -c $< -o $@
 
@@ -60,14 +83,13 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all compile bonus clean fclean re
-
-
 # Colors
 RED = \033[0;31m
 NO_COLOR = \033[0m
 YELLOW = \033[1;33m
 GREEN = \033[0;32m
+CYAN = \033[0;36m
+WHITE = \033[0;37m
 
 # Ascii
 info: ascii
@@ -126,14 +148,28 @@ $(GREEN)╚██████╗██║  ██║███████╗╚�
 $(GREEN) ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝$(GREEN)
 $(NO_COLOR)
 
-
-
+	   $(NO_COLOR)
+	   $(WHITE)　　██░▀██████████████▀░██	$(WHITE)
+	   $(WHITE)　　█▌▒▒░████████████░▒▒▐█	$(WHITE)
+	   $(WHITE)　　█░▒▒▒░██████████░▒▒▒░█	$(WHITE)
+	   $(WHITE)　　▌░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▐	$(WHITE)
+	   $(WHITE)　　░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░	$(WHITE)
+	   $(WHITE)　 ███▀▀▀██▄▒▒▒▒▒▒▒▄██▀▀▀██	$(WHITE)
+	   $(WHITE)　 ██░░░▐█░▀█▒▒▒▒▒█▀░█▌░░░█	$(WHITE)
+	   $(WHITE)　 ▐▌░░░▐▄▌░▐▌▒▒▒▐▌░▐▄▌░░▐▌	$(WHITE)
+	   $(WHITE)　　█░░░▐█▌░░▌▒▒▒▐░░▐█▌░░█	$(WHITE)
+	   $(WHITE)　　▒▀▄▄▄█▄▄▄▌░▄░▐▄▄▄█▄▄▀▒	$(WHITE)
+	   $(WHITE)　　░░░░░░░░░░└┴┘░░░░░░░░░	$(WHITE)
+	   $(WHITE)　　██▄▄░░░░░░░░░░░░░░▄▄██	$(WHITE)
+	   $(WHITE)　　████████▒▒▒▒▒▒████████	$(WHITE)
+	   $(WHITE)　　█▀░░███▒▒░░▒░░▒▀██████	$(WHITE)
+	   $(WHITE)　　█▒░███▒▒╖░░╥░░╓▒▐█████	$(WHITE)
+	   $(WHITE)　　█▒░▀▀▀░░║░░║░░║░░█████	$(WHITE)
+	   $(WHITE)　　██▄▄▄▄▀▀┴┴╚╧╧╝╧╧╝┴┴███	$(WHITE)
+	   $(WHITE)　　██████████████████████	$(WHITE)
+	   $(NO_COLOR)
 
 endef
 export ASCII_BONUS
 
 .PHONY: all clean fclean re bonus
-
-
-
-
