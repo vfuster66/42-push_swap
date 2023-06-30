@@ -6,7 +6,7 @@
 #    By: vfuster- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 08:04:07 by vfuster-          #+#    #+#              #
-#    Updated: 2023/06/30 08:06:57 by vfuster-         ###   ########.fr        #
+#    Updated: 2023/06/30 15:39:47 by vfuster-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NBR=0;
 #modification ici :#
 MINI=-100000;
 MAXI=100000;
-NBR_OF_NBRS=100;
+NBR_OF_NBRS=500;
 NBR_OF_TESTS=100;
 NBR_OF_TESTS_ABS=100;
 

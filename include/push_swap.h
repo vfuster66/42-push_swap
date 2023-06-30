@@ -6,7 +6,7 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:56:20 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/30 09:45:32 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:22:54 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,14 @@ typedef struct s_stack
 	int				total_len;
 }	t_stack;
 
+typedef struct s_arg_manager
+{
+	t_node	*last_node;
+	int		new_value;
+	char	*token;
+	char	*str;
+}	t_arg_manager;
+
 // utils_1.c
 t_node		*find_minimum(t_node *head);
 t_node		*find_maximum(t_node *head);
@@ -85,10 +93,13 @@ void		rra(t_stack *stacks, int display);
 void		rrb(t_stack *stacks, int display);
 void		rrr(t_stack *stacks, int display);
 
-// instructions_and_parsing.c
-t_node		*parsing(int index, int ac, char **av, t_node *head);
+// instructions.c
 void		execute_instructions(int display, t_stack *stacks,
 				int instruction_number, ...);
+
+// parsing.c
+t_node	*create_and_link_node(t_arg_manager *manager, int index, t_node **head);
+t_node		*parsing(int index, int ac, char **av, t_node *head);
 
 //utils_sort.c
 int			is_sorted(t_stack *stacks);

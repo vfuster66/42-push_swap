@@ -6,7 +6,7 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:19:42 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/02/16 09:08:46 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:25:29 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /******************************************************************************
  *
  * Duplique une chaine de caracteres
- * Alloue de la memoire pour une nouvelle chaine de caracteres de la 
+ * Alloue de la memoire pour une nouvelle chaine de caracteres de la
  * meme longueur que s + \0 (ft_strlen)
  * Si l'allocation echoue -> NULL
  * Boucle utilisee pour copier les caracteres de s dans str. Boucle terminee
@@ -24,20 +24,19 @@
  * Renvoie un pointeur vers le debut de la nouvelle chaine
  *
  *****************************************************************************/
-char	*ft_strdup(char const *s)
+char	*ft_strdup(const char *s)
 {
 	char	*str;
-	size_t	n;
+	int		i;
+	int		len;
 
-	n = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (str == NULL)
-		return (NULL);
-	while (s[n])
-	{
-		str[n] = s[n];
-		n++;
-	}
-	str[n] = '\0';
+	i = -1;
+	len = ft_strlen(s);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (str);
+	while (s[++i])
+		str[i] = s[i];
+	str[i] = '\0';
 	return (str);
 }

@@ -6,13 +6,13 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:28:29 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/30 11:39:06 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:30:36 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int	validate_atoi_input(char *nptr)
+static int	atoi_check(char *nptr)
 {
 	long	number;
 	int		sign;
@@ -41,10 +41,9 @@ static int	validate_atoi_input(char *nptr)
 	return (nptr[i] != '\0' || !i);
 }
 
-static int	handle_parsing_error(char *arg, int value,
-	t_node *last_node, int index)
+static int	handle_parsing_error(char *arg, int val, t_node *last_node, int index)
 {
-	if (validate_atoi_input(arg) >= 1)
+	if (atoi_check(arg) >= 1)
 	{
 		write(2, "Error\n", 6);
 		return (1);
@@ -53,56 +52,52 @@ static int	handle_parsing_error(char *arg, int value,
 		return (0);
 	else if (last_node == NULL)
 		return (1);
-	else if (last_node->value == value)
+	else if (last_node->value == val)
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
 	index--;
-	return (handle_parsing_error(arg, value, last_node->previous, index));
+	return (handle_parsing_error(arg, val, last_node->previous, index));
 }
 
-static void process_token(char *token, t_node **head, t_node **last_node, int *index)
+t_node	*create_and_link_node(t_arg_manager *manager, int index, t_node **head)
 {
-    int new_value;
+	t_node	*new_node;
 
-	new_value = ft_atoi(token);
-    if (handle_parsing_error(token, new_value, *last_node, *index))
-    {
-        free_node(head);
-        return;
-    }
-    if (*head == NULL)
-    {
-        *last_node = create_node(new_value, *index, NULL);
-        *head = *last_node;
-    }
-    else
-    {
-        (*last_node)->next = create_node(new_value, *index, *last_node);
-        *last_node = (*last_node)->next;
-    }
-    *index += 1;
+	new_node = create_node(manager->new_value, index, manager->last_node);
+	if (!new_node)
+		return (NULL);
+	if (manager->last_node)
+		manager->last_node->next = new_node;
+	else
+		*head = new_node;
+	return (new_node);
 }
 
-t_node *parsing(int index, int ac, char **av, t_node *head)
+t_node	*parsing(int index, int ac, char **av, t_node *head)
 {
-	char	*str;
-	char	*token;
-    t_node *last_node = NULL;
+	t_arg_manager	manager;
 
-    while ((index + 1) < ac)
-    {
-        str = ft_strdup(av[index + 1]);
-        if (str == NULL)
-            return NULL;
-        token = ft_strtok(str, " ");
-        while (token != NULL)
-        {
-            process_token(token, &head, &last_node, &index);
-            token = ft_strtok(NULL, " ");
-        }
-        free(str);
-    }
-    return head;
+	manager.last_node = NULL;
+	while ((index + 1) < ac)
+	{
+		manager.str = ft_strdup(av[index + 1]);
+		if (manager.str == NULL)
+			return (NULL);
+		manager.token = ft_strtok(manager.str, " ");
+		while (manager.token != NULL)
+		{
+			manager.new_value = ft_atoi(manager.token);
+			if (handle_parsing_error(manager.token, manager.new_value, manager.last_node, index))
+				return (free_node(&head));
+			manager.last_node = create_and_link_node(&manager, index, &head);
+			if (!manager.last_node)
+				return (free_node(&head));
+			manager.token = ft_strtok(NULL, " ");
+			index++;
+		}
+		free(manager.str);
+	}
+	return (head);
 }
