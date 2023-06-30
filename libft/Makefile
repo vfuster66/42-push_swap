@@ -69,6 +69,7 @@ SRCS := ft_strjoin.c \
 	ft_strcmp.c \
 	ft_realloc.c \
 	ft_strcpy.c \
+	ft_strtok.c \
 
 OBJS := $(SRCS:.c=.o)
 
@@ -90,8 +91,6 @@ RM := rm -f
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-	@echo "$(GREEN)$(NAME) created $(CLR_RMV)✔️"
 
 all: $(NAME)
 

@@ -6,13 +6,13 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 08:28:40 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/28 10:11:10 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:19:20 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-	int	initialize_structure(t_stack **stacks, int ac, char **av)
+int	initialize_structure(t_stack **stacks, int ac, char **av)
 {
 	t_node	*a;
 
@@ -67,12 +67,11 @@ static void	push_swap(t_stack *stacks)
 		medium_sort(stacks);
 	else if (sort_result)
 		quick_sort(stacks);
-
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_stack *stacks;
+	t_stack	*stacks;
 
 	if (ac == 1)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 08:33:52 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/28 09:36:06 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:18:08 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	final_sort(t_stack *stack)
 	t_node	*last_node;
 
 	last_node = find_last_node(stack->a);
-	if (stack->b->index > stack->a->index && stack->b->index < stack->a->next->index)
+	if (stack->b->index > stack->a->index
+		&& stack->b->index < stack->a->next->index)
 	{
 		if (stack->b->next && stack->b->next->next \
 		&& stack->b->next->index < stack->b->next->next->index)

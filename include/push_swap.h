@@ -6,7 +6,7 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:56:20 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/28 10:42:24 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:16:40 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void		rrr(t_stack *stacks, int display);
 // instructions_and_parsing.c
 t_node		*parsing(int index, int ac, char **av, t_node *head);
 void		execute_instructions(int display, t_stack *stacks,
-					int instruction_number, ...);
+				int instruction_number, ...);
 
 //utils_sort.c
 int			is_sorted(t_stack *stacks);

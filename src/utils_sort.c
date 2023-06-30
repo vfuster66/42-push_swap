@@ -6,7 +6,7 @@
 /*   By: vfuster- <vfuster-@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 08:29:30 by vfuster-          #+#    #+#             */
-/*   Updated: 2023/06/28 09:36:15 by vfuster-         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:18:23 by vfuster-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,3 @@ void	perform_rotation(t_stack *stack, int position, int stack_a)
 		}
 	}
 }
-
