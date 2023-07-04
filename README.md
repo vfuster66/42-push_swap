@@ -1,6 +1,8 @@
 # push_swap
 Parce que Swap_push, c’est moins naturel
 
+/nfs/homes/vfuster-/Downloads/Screenshot 2023-07-04 at 11-27-12 Intra Projects push_swap.png
+
 Ce projet vous demande de trier des données dans une pile, en utilisant un set
 d’instructions limité, et avec le moins d’opérations possibles. Pour le réussir, vous
 devrez manipuler différents algorithmes de tri et choisir la (ou les ?) solution la plus
